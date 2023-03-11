@@ -12,8 +12,8 @@ const ItemList = (props: Props) => {
     console.log(characters)
     return (
         <List.Base align={'center'} justify={'center'} inline={false}>
-            {characters.map((character: Character) => (
-                <CharacterItem character={character} />
+            {characters.map((character: Character, index: number) => (
+                <CharacterItem character={character} index={index} key={`character-item-${index}`} />
             ))}
         </List.Base>
     )

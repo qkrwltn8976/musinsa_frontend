@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useCharacterStore } from '../../stores/characterStore'
 import { Character } from '../../types/character'
 import * as Item from './ItemList.style'
 
 type Props = {
-    character: Character
+    character: Character;
+    index: number;
 }
 
-const CharacterItem = ({ character }: Props) => {
+const CharacterItem = ({ character, index }: Props) => {
+    const { deleteCharacter } = useCharacterStore()
+    const handleClickDeleteButton = useCallback(() => {
+        deleteCharacter(index)
+    }, [index])
+
     return (
         <Item.ItemBox inline={false} justify={'center'} align={'center'}>
             <Item.InfoWrapper inline={false} justify={'start'} align={'center'}>
@@ -19,7 +26,7 @@ const CharacterItem = ({ character }: Props) => {
                     books {character.books.length} / tvSeries {character.tvSeries.length}
                 </Item.DetailWrapper>
 
-                <Item.DeleteButton>x</Item.DeleteButton>
+                <Item.DeleteButton onClick={handleClickDeleteButton}>x</Item.DeleteButton>
             </Item.InfoWrapper>
 
         </Item.ItemBox>

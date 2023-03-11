@@ -8,6 +8,7 @@ type CharacterState = {
 
 type CharacterAction = {
   setCharacters: (characters: Character[]) => void;
+  deleteCharacter: (index: number) => void;
 };
 
 export const useCharacterStore = create<CharacterState & CharacterAction>(
@@ -19,5 +20,11 @@ export const useCharacterStore = create<CharacterState & CharacterAction>(
           state.characters = characters;
         })
       ),
+    deleteCharacter: (index: number) =>
+      set((state) => ({
+        characters: state.characters.filter(
+          (_: Character, key: number) => key !== index
+        ),
+      })),
   })
 );
