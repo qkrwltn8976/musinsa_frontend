@@ -1,9 +1,19 @@
 import * as React from "react";
+import Layout from "../../components/commons/Layout";
+import Filters from "../../components/Filters";
 
-interface IMainProps {}
+import ItemList from "../../components/ItemList";
 
-const Main: React.FunctionComponent<IMainProps> = (props) => {
-  return <>main</>;
+interface IMainProps { }
+
+const Main = ({ }: IMainProps) => {
+  return (
+    <Layout headerItem={
+      <Filters />
+    }>
+      <ItemList />
+    </Layout>
+  );
 };
 
-export default Main;
+export default Main
