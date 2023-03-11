@@ -8,14 +8,13 @@ import * as List from './ItemList.style'
 type Props = {}
 
 const ItemList = (props: Props) => {
-    const { data } = useCharacters({ page: 1, pageSize: 10 })
-    console.log(data)
+    const { characters } = useCharacters({ page: 1, pageSize: 100 })
+    console.log(characters)
     return (
         <List.Base align={'center'} justify={'center'} inline={false}>
-            {data?.data.map((character: Character) => (
+            {characters.map((character: Character) => (
                 <CharacterItem character={character} />
             ))}
-
         </List.Base>
     )
 }
