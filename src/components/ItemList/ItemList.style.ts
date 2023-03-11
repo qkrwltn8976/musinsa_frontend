@@ -8,10 +8,10 @@ export const Base = styled(Column)`
   padding: 10px 20px 0px;
 `;
 
-export const ItemBox = styled.div`
+export const ItemBox = styled(Column)`
   padding: 16px;
   width: 375px;
-  height: 152px;
+  height: 100px;
 `;
 
 export const InfoWrapper = styled(Row)``;
