@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { useFilterStore } from '../../store/filterStore'
+import { useFilterStore } from '../../stores/filterStore'
 import * as Filter from './Filters.style'
 type Props = {}
 

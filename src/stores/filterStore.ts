@@ -1,6 +1,6 @@
 import { Filter } from "../types/filter";
 import { create } from "zustand";
-
+import produce from "immer";
 type FilterState = {
   filters: Filter[];
 };
@@ -29,14 +29,9 @@ export const useFilterStore = create<FilterState & FilterAction>((set) => ({
     },
   ],
   toggleFilter: (key) =>
-    set((state) => ({
-      filters: state.filters.map((filter, index) =>
-        index === key
-          ? {
-              ...filter,
-              isActive: !filter.isActive,
-            }
-          : filter
-      ),
-    })),
+    set(
+      produce((state) => {
+        state.filters[key].isActive = !state.filters[key].isActive;
+      })
+    ),
 }));
