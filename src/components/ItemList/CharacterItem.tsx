@@ -1,18 +1,21 @@
 import React from 'react'
+import { Character } from '../../types/character'
 import * as Item from './ItemList.style'
 
-type Props = {}
+type Props = {
+    character: Character
+}
 
-const CharacterItem = (props: Props) => {
+const CharacterItem = ({ character }: Props) => {
     return (
         <Item.ItemBox>
             <Item.InfoWrapper inline={false} justify={'start'} align={'center'}>
-                <Item.Name>이름</Item.Name>
-                <Item.Address>주소</Item.Address>
+                <Item.Name>{character.name}</Item.Name>
+                <Item.Address>{character.url}</Item.Address>
             </Item.InfoWrapper>
             <Item.InfoWrapper inline={false} justify={'space-between'} align={'center'}>
                 <Item.DetailWrapper inline={false} justify={'start'} align={'baseline'}>
-                    <Item.Title>타이틀</Item.Title>
+                    <Item.Title>{character.titles}</Item.Title>
                     books / tvSeriess
                 </Item.DetailWrapper>
 
