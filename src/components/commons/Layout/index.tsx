@@ -1,10 +1,22 @@
 import React from 'react'
 import { IChildrenProps } from '../../../types/chilldrenProps'
 import Header from '../Header'
+import * as Style from './Layout.style'
 
-const Layout = ({ children }: IChildrenProps) => {
+interface ILayoutProps extends IChildrenProps {
+    headerItem: React.ReactElement
+}
+
+const Layout = ({ children, headerItem }: ILayoutProps) => {
     return (
-        <><Header />{children}</>
+        <Style.Base>
+            <Header>
+                {headerItem}
+            </Header>
+            <Style.Content>
+                {children}
+            </Style.Content>
+        </Style.Base>
     )
 }
 
