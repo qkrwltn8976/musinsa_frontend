@@ -9,7 +9,7 @@ type Props = {}
 
 const ItemList = (props: Props) => {
     const { characters } = useCharacters({ page: 1, pageSize: 100 })
-    console.log(characters)
+
     return (
         <List.Base align={'center'} justify={'center'} inline={false}>
             {characters.map((character: Character, index: number) => (

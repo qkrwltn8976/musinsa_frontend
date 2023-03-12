@@ -23,7 +23,9 @@ const CharacterItem = ({ character, index }: Props) => {
             <Item.InfoWrapper inline={false} justify={'space-between'} align={'center'}>
                 <Item.DetailWrapper inline={false} justify={'start'} align={'baseline'}>
                     <Item.Title>{character.titles}</Item.Title>
-                    books {character.books.length} / tvSeries {character.tvSeries.length}
+                    books {character.books.length} /
+                    tvSeries {character.tvSeries[0].length === 0 ? 0 : character.tvSeries.length} /
+                    {character.gender}
                 </Item.DetailWrapper>
 
                 <Item.DeleteButton onClick={handleClickDeleteButton}>x</Item.DeleteButton>

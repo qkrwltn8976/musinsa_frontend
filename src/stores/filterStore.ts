@@ -1,12 +1,14 @@
 import { Filter } from "../types/filter";
 import { create } from "zustand";
 import produce from "immer";
+import { Character } from "../types/character";
 type FilterState = {
   filters: Filter[];
 };
 
 type FilterAction = {
   toggleFilter: (index: number) => void;
+  resetFilters: () => void;
 };
 
 export const useFilterStore = create<FilterState & FilterAction>((set) => ({
@@ -14,14 +16,17 @@ export const useFilterStore = create<FilterState & FilterAction>((set) => ({
     {
       name: "생존인물만",
       isActive: false,
+      filterFn: (character: Character) => !character.died,
     },
     {
       name: "여자",
       isActive: false,
+      filterFn: (character: Character) => character.gender === "Female",
     },
     {
       name: "tvSeries 없음",
       isActive: false,
+      filterFn: (character: Character) => !character.tvSeries[0],
     },
     {
       name: "초기화",
@@ -34,4 +39,11 @@ export const useFilterStore = create<FilterState & FilterAction>((set) => ({
         state.filters[key].isActive = !state.filters[key].isActive;
       })
     ),
+  resetFilters: () =>
+    set((state) => ({
+      filters: state.filters.map((filter, index) => ({
+        ...filter,
+        isActive: false,
+      })),
+    })),
 }));

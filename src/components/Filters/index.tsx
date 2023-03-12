@@ -1,23 +1,45 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
+import { useCharacterStore } from '../../stores/characterStore'
 import { useFilterStore } from '../../stores/filterStore'
-import * as Filter from './Filters.style'
+import { Filter } from '../../types/filter'
+import * as Style from './Filters.style'
 type Props = {}
 
 const Filters = (props: Props) => {
-    const { filters, toggleFilter } = useFilterStore()
-    const handleToggleFilter = useCallback((index: number) => () => {
-        toggleFilter(index)
+    const { filters, toggleFilter, resetFilters } = useFilterStore()
+    const { characters, setFilteredCharacters, resetCharacters } = useCharacterStore()
+
+    const handleToggleFilter = useCallback((filter: Filter, index: number) => () => {
+        if (index === 3) {
+            resetFilters()
+            resetCharacters()
+            return
+        } else {
+            toggleFilter(index)
+        }
     }, [])
+
+    useEffect(() => {
+        let filteredData = [...characters]
+        filters.forEach((item) => {
+            if (item.isActive) {
+                filteredData = filteredData.filter((character) => item.filterFn && item.filterFn(character))
+            }
+        })
+        setFilteredCharacters(filteredData)
+    }, [filters])
     return (
-        <Filter.Base align={'center'} justify={'center'} inline={false}>
+        <Style.Base align={'center'} justify={'center'} inline={false}>
             {filters.map((filter, index) => (
-                <Filter.Item
+                <Style.Item
                     className={`${filter.isActive ? 'active' : ''}`}
                     key={`filter-item-${index}`}
-                    onClick={handleToggleFilter(index)}
-                >{filter.name}</Filter.Item>
+                    onClick={handleToggleFilter(filter, index)}
+                >
+                    {filter.name}
+                </Style.Item>
             ))}
-        </Filter.Base >
+        </Style.Base >
     )
 }
 

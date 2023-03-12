@@ -4,16 +4,20 @@ import { Character } from "../types/character";
 
 type CharacterState = {
   characters: Character[];
+  filteredCharacters: Character[];
 };
 
 type CharacterAction = {
   setCharacters: (characters: Character[]) => void;
   deleteCharacter: (index: number) => void;
+  setFilteredCharacters: (characters: Character[]) => void;
+  resetCharacters: () => void;
 };
 
 export const useCharacterStore = create<CharacterState & CharacterAction>(
   (set) => ({
     characters: [],
+    filteredCharacters: [],
     setCharacters: (characters: Character[]) =>
       set(
         produce((state) => {
@@ -26,5 +30,17 @@ export const useCharacterStore = create<CharacterState & CharacterAction>(
           (_: Character, key: number) => key !== index
         ),
       })),
+    setFilteredCharacters: (characters: Character[]) =>
+      set(
+        produce((state) => {
+          state.filteredCharacters = characters;
+        })
+      ),
+    resetCharacters: () =>
+      set(
+        produce((state) => {
+          state.filteredCharacters = state.characters;
+        })
+      ),
   })
 );
