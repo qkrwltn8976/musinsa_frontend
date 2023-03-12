@@ -26,7 +26,7 @@ export const useCharacterStore = create<CharacterState & CharacterAction>(
       ),
     deleteCharacter: (index: number) =>
       set((state) => ({
-        characters: state.characters.filter(
+        filteredCharacters: state.filteredCharacters.filter(
           (_: Character, key: number) => key !== index
         ),
       })),
