@@ -11,6 +11,4 @@ export const Base = styled.div`
   margin-right: auto;
 `;
 
-export const Content = styled.div`
-  margin-top: 48px;
-`;
+export const Content = styled.div``;

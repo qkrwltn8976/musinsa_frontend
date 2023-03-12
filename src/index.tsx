@@ -9,7 +9,14 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // window 가 다시 포커스 될 때 refetch
+      retry: 0, // 요청이 실패했을시 재요청을 실행합니다. 기본값은 3입니다.
+    },
+  },
+});
 
 root.render(
   <React.StrictMode>
