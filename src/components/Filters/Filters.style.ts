@@ -14,7 +14,6 @@ export const Item = styled.button`
   height: 32px;
   cursor: pointer;
 
-  &:hover,
   &.active {
     background: ${palette.lightBlue[50]};
     color: ${palette.blue[900]};
