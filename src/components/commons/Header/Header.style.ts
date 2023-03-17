@@ -3,7 +3,6 @@ import Box from "../../../styles/box";
 import { palette } from "../../../styles/palette";
 
 export const Base = styled.div`
-  position: sticky;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -15,6 +14,5 @@ export const Base = styled.div`
 
 export const Container = styled(Box)`
   padding: 20px 20px 15px;
-
   height: 50px !important;
 `;

@@ -18,11 +18,19 @@ export const InfoWrapper = styled(Row)``;
 
 export const Title = styled.p`
   color: ${palette.gray[600]};
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Address = styled.p`
   ${Small.None.Medium};
   color: ${palette.gray[400]};
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Name = styled.p`
@@ -30,4 +38,12 @@ export const Name = styled.p`
 `;
 
 export const DetailWrapper = styled(Column)``;
-export const DeleteButton = styled.button``;
+export const DeleteButton = styled.div`
+  cursor: pointer;
+  display: inline;
+
+  & > img {
+    width: 15px;
+    height: 15px;
+  }
+`;
