@@ -1,6 +1,6 @@
 # :: 무신사 프론트엔드 과제
 ## 🔗 링크 
-https://musinsa-frontend-8qsu0wcao-qkrwltn8976.vercel.app/
+https://musinsa-frontend.vercel.app/
 
 ## 📚 기술스택
 
@@ -21,6 +21,28 @@ https://musinsa-frontend-8qsu0wcao-qkrwltn8976.vercel.app/
 | **typescript**       | type 안정성과 더 나은 개발 디버깅을 위해 사용하였습니다.                            |
 | **zustand**       | 가벼운 상태관리 라이브러리를 살펴보던 중 typescript로 작성되어 있고 현업에서 사용해본 redux와 유사하며 동일한 dev-tool을 사용하여 선정하였습니다.     |
 
+## 요구 사항
+### 레이아웃
+- [x] 상단 타이틀, 필터는 고정이 아닙니다.
+### API 호출
+- [x] page는 1~10까지 순차적으로 호출합니다.
+- [x] 스크롤이 리스트 하단까지 내려오면 다음 리스트 항목이 노출되는 무한 스크롤로 구현 됩니다.
+### 데이터 UI
+- [x] api를 통해 전달받은 데이터 중 name, aliases, title, books, tvSeries 항목을 노출합니다. 
+- [x] 특정 항목에  노출해야될 내용이 많을 경우, ellipsis를 사용해도 괜찮습니다. 
+- [x] books, tvSeries는 항목 수를 노출합니다.
+### 데이터 필터
+- [x] 필터는 토글 형태로 처리되고 활성화 되어있으면 아래 리스트에 적용이 됩니다. 
+- [x] 비활성화 가 되면 해제가 됩니다. 
+- [x] 활성/비활성 여부가 시각적으로 구분되어야 합니다.
+- [x] 필터는 중복 적용 가능합니다.
+### 데이터 삭제
+- [x] 리스트 아이템의 삭제 버튼을 누르면 리스트에서 사라집니다. 
+- [x] 초기화 버튼을 누르면 다시 노출 됩니다.
+### 페이징 설정
+- [x] 해당 페이지 진입시 query params에 page를 명시하면 이 값이 리스트의 시작 page가 됩니다.
+
+ 
 ## 실행 방법
 
 ```bash
