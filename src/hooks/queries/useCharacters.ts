@@ -7,7 +7,7 @@ import { useCharacterStore } from "../../stores/characterStore";
 const useCharacters = (param: RequestParam) => {
   const { filteredCharacters, setCharacters, setFilteredCharacters } =
     useCharacterStore();
-  const { fetchNextPage } = useInfiniteQuery({
+  const { fetchNextPage, isLoading, isFetching } = useInfiniteQuery({
     queryKey: characterKeys.all(),
     queryFn: async ({ pageParam = 1 }) => {
       const { data } = await getCharacters({ pageSize: 10, page: pageParam });
@@ -28,7 +28,12 @@ const useCharacters = (param: RequestParam) => {
       setFilteredCharacters(data);
     },
   });
-  return { characters: filteredCharacters, fetchNextPage };
+  return {
+    characters: filteredCharacters,
+    fetchNextPage,
+    isLoading,
+    isFetching,
+  };
 };
 
 export { useCharacters };
