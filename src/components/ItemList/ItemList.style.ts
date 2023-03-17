@@ -4,8 +4,8 @@ import { Large, Small } from "../../styles/font";
 import { palette } from "../../styles/palette";
 
 export const Base = styled(Column)`
-  max-width: 768px;
   padding: 10px 20px 0px;
+  width: 100%;
 `;
 
 export const ItemBox = styled(Column)`

@@ -6,8 +6,16 @@ export const Base = styled(Row)`
   gap: 15px;
 `;
 
-export const Item = styled.div`
-  background: ${palette.lightBlue[100]};
+export const Item = styled.button`
+  background: ${palette.gray[200]};
+  color: ${palette.gray[500]};
+  border: none;
   border-radius: 8px;
   height: 32px;
+  cursor: pointer;
+
+  &.active {
+    background: ${palette.lightBlue[50]};
+    color: ${palette.blue[900]};
+  }
 `;

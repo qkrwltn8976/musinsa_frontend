@@ -1,10 +1,34 @@
 import { characterKeys } from "./../../constants/queryKeys.constant";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCharacters } from "../../apis/character";
 import { RequestParam } from "../../types/character";
-// const useGetTodos = () => useQuery<Todo[]>(todoKeys.all, () => getTodos());
+import { useCharacterStore } from "../../stores/characterStore";
 
-const useCharacters = (param: RequestParam) =>
-  useQuery(characterKeys.all(), () => getCharacters(param));
+const useCharacters = (param: RequestParam) => {
+  const { filteredCharacters, setCharacters, setFilteredCharacters } =
+    useCharacterStore();
+  const { fetchNextPage } = useInfiniteQuery({
+    queryKey: characterKeys.all(),
+    queryFn: async ({ pageParam = 1 }) => {
+      const { data } = await getCharacters({ pageSize: 10, page: pageParam });
+      console.log(param);
+      return {
+        data,
+        nextPage: pageParam,
+      };
+    },
+    getNextPageParam: (lastPage, aa) => {
+      console.log(lastPage.data?.length, aa);
+      return lastPage.data?.length ? lastPage.nextPage + 1 : undefined;
+    },
+    onSuccess: ({ pages }) => {
+      console.log("success");
+      const data = pages.map((page) => page.data).flat();
+      setCharacters(data);
+      setFilteredCharacters(data);
+    },
+  });
+  return { characters: filteredCharacters, fetchNextPage };
+};
 
 export { useCharacters };
