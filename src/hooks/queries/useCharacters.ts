@@ -21,7 +21,6 @@ const useCharacters = (param: RequestParam) => {
       return lastPage.data?.length ? lastPage.nextPage + 1 : undefined;
     },
     onSuccess: ({ pages }) => {
-      console.log("success");
       const data = pages.map((page) => page.data).flat();
       setCharacters(data);
       setFilteredCharacters(data);

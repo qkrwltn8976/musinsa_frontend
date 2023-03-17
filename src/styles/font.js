@@ -33,9 +33,6 @@ export const Small = {
   },
 };
 
-// export const Small = css`
-// font-size: 14px;
-// `
 export const Size = {
   Small: css`
     font-size: 14px;

@@ -12,13 +12,12 @@ type Props = {};
 
 const ItemList = (props: Props) => {
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("page"))
+
   const { characters, fetchNextPage, isLoading, isFetching } = useCharacters({
     page: parseInt(searchParams.get("page") ?? '1', 10) as number,
     pageSize: 10,
   });
   const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
-    console.log(`감지결과 : ${isIntersecting}`);
     if (!isIntersecting) return;
     fetchNextPage();
   };

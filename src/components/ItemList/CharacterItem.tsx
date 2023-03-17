@@ -26,8 +26,8 @@ const CharacterItem = ({ character, index, isLast, setTarget }: Props) => {
             ref={setTarget}
         >
             <Item.InfoWrapper inline={false} justify={"start"} align={"center"}>
-                <Item.Name>{character.name}</Item.Name>
-                <Item.Address>{character.aliases.join(", ")}</Item.Address>
+                {character.name && <Item.Name>{character.name}</Item.Name>}
+                <Item.Alias>{character.aliases.join(", ")}</Item.Alias>
             </Item.InfoWrapper>
             <Item.InfoWrapper
                 inline={false}
@@ -36,8 +36,7 @@ const CharacterItem = ({ character, index, isLast, setTarget }: Props) => {
             >
                 <Item.DetailWrapper inline={false} justify={"start"} align={"baseline"}>
                     <Item.Title>{character.titles.join(", ")}</Item.Title>
-                    books {character.books.length} / tvSeries{" "}
-                    {character.tvSeries[0].length === 0 ? 0 : character.tvSeries.length}
+                    <Item.Info> books {character.books.length} / tvSeries  {character.tvSeries[0].length === 0 ? 0 : character.tvSeries.length}s</Item.Info>
                 </Item.DetailWrapper>
 
                 <Item.DeleteButton onClick={handleClickDeleteButton}>
