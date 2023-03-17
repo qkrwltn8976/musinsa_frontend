@@ -5,7 +5,6 @@ import { RequestParam } from "../../types/character";
 import { useCharacterStore } from "../../stores/characterStore";
 
 const useCharacters = (param: RequestParam) => {
-  console.log(param);
   const { filteredCharacters, setCharacters, setFilteredCharacters } =
     useCharacterStore();
   const { fetchNextPage, isLoading, isFetching } = useInfiniteQuery({

@@ -23,7 +23,7 @@ const CharacterItem = ({ character, index, isLast, setTarget }: Props) => {
             inline={false}
             justify={"center"}
             align={"center"}
-            ref={setTarget}
+            ref={isLast ? setTarget : null}
         >
             <Item.InfoWrapper inline={false} justify={"start"} align={"center"}>
                 {character.name && <Item.Name>{character.name}</Item.Name>}
