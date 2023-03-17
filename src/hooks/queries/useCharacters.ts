@@ -5,20 +5,19 @@ import { RequestParam } from "../../types/character";
 import { useCharacterStore } from "../../stores/characterStore";
 
 const useCharacters = (param: RequestParam) => {
+  console.log(param);
   const { filteredCharacters, setCharacters, setFilteredCharacters } =
     useCharacterStore();
   const { fetchNextPage, isLoading, isFetching } = useInfiniteQuery({
     queryKey: characterKeys.all(),
-    queryFn: async ({ pageParam = 1 }) => {
+    queryFn: async ({ pageParam = param.page }) => {
       const { data } = await getCharacters({ pageSize: 10, page: pageParam });
-      console.log(param);
       return {
         data,
         nextPage: pageParam,
       };
     },
     getNextPageParam: (lastPage, aa) => {
-      console.log(lastPage.data?.length, aa);
       return lastPage.data?.length ? lastPage.nextPage + 1 : undefined;
     },
     onSuccess: ({ pages }) => {

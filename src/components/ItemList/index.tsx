@@ -1,4 +1,5 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import useIntersectionObserver from "../../hooks/commons/useIntersectionObserver";
 import { useCharacters } from "../../hooks/queries/useCharacters";
 import { Character } from "../../types/character";
@@ -10,8 +11,10 @@ import * as List from "./ItemList.style";
 type Props = {};
 
 const ItemList = (props: Props) => {
+  const [searchParams] = useSearchParams();
+  console.log(searchParams.get("page"))
   const { characters, fetchNextPage, isLoading, isFetching } = useCharacters({
-    page: 1,
+    page: parseInt(searchParams.get("page") ?? '1', 10) as number,
     pageSize: 10,
   });
   const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
