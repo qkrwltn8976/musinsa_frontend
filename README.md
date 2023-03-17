@@ -14,9 +14,9 @@ https://musinsa-frontend.vercel.app/
 
 | 라이브러리           | 용도                                                                                |
 | -------------------- | ----------------------------------------------------------------------------------- |
-| **React Query**      | 서버 상태 관리를 위해 사용하였습니다.                                               |
-| **emotion**          | CSS in JS 방식으로 CSS를 작성하기 위해 사용하였습니다.                              |
-| **react-router-dom** | 페이지 이동 처리 및 중첩 라우팅 사용을 위하여 react-router-dom v6를 사용하였습니다. |
+| **React Query**      | api 데이터에서 받아온 서버 상태를 클라이언트 상태와 분리하여 관리하고 무한스크롤 처리를 위해 사용하였습니다.                                               |
+| **emotion**          | CSS in JS 방식으로 CSS를 작성하고 CSS 재사용을 위해 사용하였습니다.                              |
+| **react-router-dom** | 페이지 이동 처리 및 중첩 라우팅 사용을 위하여 react-router-dom v6를 사용하였습니다. url의 queryParam에서 데이터를 받아오기 위하여 useSearchParam을 사용하였습니다 |
 | **axios**            | 비동기 HTTP 통신 처리를 위해 사용하였습니다.                                        |
 | **typescript**       | type 안정성과 더 나은 개발 디버깅을 위해 사용하였습니다.                            |
 | **zustand**       | 가벼운 상태관리 라이브러리를 살펴보던 중 typescript로 작성되어 있고 현업에서 사용해본 redux와 유사하며 동일한 dev-tool을 사용하여 선정하였습니다.     |
